@@ -61,6 +61,9 @@ double executarOperacao(double num1, double num2, String operador) {
 }
 
 double calcularExpressao(String input) {
+  if (isOperator(input[0])) {
+    input = '0$input';
+  }
   input = tratarOperadoresConsecutivos(input);
   List<String> keys = dividirEmKeys(input);
   List<String> operadores = [];
@@ -103,7 +106,7 @@ void executavel() {
       double resultado = calcularExpressao(input);
       print('O resultado dessa operação é: $resultado');
     } catch (e) {
-      print('Erro');
+      throw Exception('Algo deu errado, tente novamente');
     }
   }
 }
